@@ -1,0 +1,19 @@
+To execute nodeapp in background
+----------------------------------------------------------------------------------------------------------
+
+screen                //start with this command
+
+CTL+A    then D
+
+screen -r               //to return to the process in background
+
+
+force to delete directories
+------------------------------------------------------------------------------------------------------
+
+rm -rf <directory>
+
+github acces by token every 90 days
+------------------------------------------------------------------------------------------------------
+push by token
+settings/dev options/crete new token
