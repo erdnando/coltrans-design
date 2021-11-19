@@ -1,0 +1,23 @@
+version: '3'
+services:
+  socket-server1:
+    image: "erdnando/coltrans-websocket-server:1.0"
+    container_name: coltrans-web-socket-server
+    ports:
+      - "9001:8080"
+  socket-server2:
+    image: "erdnando/coltrans-websocket-server:1.0"
+    container_name: coltrans-web-socket-server2
+    ports:
+      - "9002:8080"
+  haproxy:
+    image: "erdnando/coltrans-reverse-proxy-ha:1.0"
+    container_name: coltrans-reverse-proxy-ha
+    ports:
+      - "80:80"
+  frontend-vue:
+     image: "erdnando/coltrans-vuejs-websocket:1.0"
+     container_name: coltrans-vuejs-websocket
+     ports:
+      - "8080:8080"
+      
