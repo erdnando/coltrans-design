@@ -1,4 +1,4 @@
-version: '3.5'
+version: '3.6'
 services:
   socket-server1:
     image: "erdnando/coltrans-websocket-server:1.0"
@@ -41,11 +41,27 @@ services:
      networks:
       coltrans_network:
        aliases:
-        - frontend 
+        - frontend
+  rabbitmq:
+    image: "rabbitmq:3.9-management"
+    container_name: coltrans-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+       RABBITMQ_ERLANG_COOKIE: "cookie_for_clustering"
+       RABBITMQ_DEFAULT_USER: "rabbit"
+       RABBITMQ_DEFAULT_PASS: "password"
+    volumes:
+        - /mnt/0e74f96b-2899-46dc-b2b5-b0c41d7d9697/projectos/coltrans-solution/Bus/rabbitmq/data/:/var/lib/rabbitmq/
+        - /mnt/0e74f96b-2899-46dc-b2b5-b0c41d7d9697/projectos/coltrans-solution/Bus/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      coltrans_network:
+       aliases:
+        - rabbitmq
 networks:
    coltrans_network:
     name: coltrans_network
     driver: bridge
     ipam:
       driver: default
-      
