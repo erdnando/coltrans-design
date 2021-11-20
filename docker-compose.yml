@@ -1,4 +1,4 @@
-version: '3'
+version: '3.5'
 services:
   socket-server1:
     image: "erdnando/coltrans-websocket-server:1.0"
@@ -6,18 +6,30 @@ services:
     restart: always
     ports:
       - "9001:8080"
+    networks:
+      coltrans_network:
+       aliases:
+        - socket-server1
   socket-server2:
     image: "erdnando/coltrans-websocket-server:1.0"
     container_name: coltrans-web-socket-server2
     restart: always
     ports:
       - "9002:8080"
+    networks:
+      coltrans_network:
+       aliases:
+        - socket-server2
   haproxy:
     image: "erdnando/coltrans-reverse-proxy-ha:1.0"
     container_name: coltrans-reverse-proxy-ha
     restart: always
     ports:
       - "80:80"
+    networks:
+      coltrans_network:
+       aliases:
+        - proxy-ha
   frontend-vue:
      image: "erdnando/coltrans-vuejs-websocket:1.0"
      container_name: coltrans-vuejs-websocket
@@ -26,4 +38,14 @@ services:
       - "8080:8080"
      environment:
        WEBSOCKET_SERVER: "http://192.168.0.4"
+     networks:
+      coltrans_network:
+       aliases:
+        - frontend 
+networks:
+   coltrans_network:
+    name: coltrans_network
+    driver: bridge
+    ipam:
+      driver: default
       
