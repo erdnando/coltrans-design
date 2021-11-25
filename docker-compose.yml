@@ -25,7 +25,7 @@ services:
     container_name: coltrans-reverse-proxy-ha
     restart: always
     ports:
-      - "80:80"
+      - "81:81"
     networks:
       coltrans_network:
        aliases:
@@ -59,7 +59,7 @@ services:
     container_name: coltrans-reverse-proxy-ha-frontend
     restart: always
     ports:
-      - "81:81"
+      - "80:80"
     networks:
       coltrans_network:
        aliases:
