@@ -81,6 +81,16 @@ services:
       coltrans_network:
        aliases:
         - rabbitmq
+  ms-incrementa:
+    image: "erdnando/coltrans-ms-incrementa:1.0"
+    container_name: coltrans-ms-incrementa
+    restart: always
+    ports:
+      - "10001:8080"
+    networks:
+      coltrans_network:
+       aliases:
+        - ms-incrementa
 networks:
    coltrans_network:
     name: coltrans_network
