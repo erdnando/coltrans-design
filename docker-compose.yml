@@ -25,7 +25,7 @@ services:
     container_name: coltrans-reverse-proxy-ha
     restart: always
     ports:
-      - "88:88"
+      - "81:81"
     networks:
       coltrans_network:
        aliases:
@@ -91,22 +91,22 @@ services:
       coltrans_network:
        aliases:
         - ms-incrementa
-  jenkins:
-    image: "jenkins/jenkins:lts"
-    container_name: coltrans-jenkins
-    restart: always
-    ports:
-      - "8083:8080"
-      - "5000:5000"
-    privileged: true
-    user: root
-    volumes:
-      - ../CI_CD/jenkins_data:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      coltrans_network:
-       aliases:
-        - jenkins
+  #jenkins:
+  #  image: "jenkins/jenkins:lts"
+  #  container_name: coltrans-jenkins
+  #  restart: always
+  #  ports:
+  #    - "8083:8080"
+  #    - "5000:5000"
+  #  privileged: true
+  #  user: root
+  #  volumes:
+  #    - ../CI_CD/jenkins_data:/var/jenkins_home
+  #    - /var/run/docker.sock:/var/run/docker.sock
+  #  networks:
+  #    coltrans_network:
+  #     aliases:
+  #      - jenkins
 networks:
    coltrans_network:
     name: coltrans_network
