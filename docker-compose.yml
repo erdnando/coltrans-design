@@ -106,7 +106,7 @@ services:
   #  networks:
   #    coltrans_network:
   #     aliases:
-  #      - jenkins
+  #      - jenkins <----
 networks:
    coltrans_network:
     name: coltrans_network
