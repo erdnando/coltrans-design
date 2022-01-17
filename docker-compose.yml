@@ -1,7 +1,7 @@
 version: '3.6'
 services:
   socket-server1:
-    image: "erdnando/coltrans-websocket-server:1.0"
+    image: "erdnando/coltrans-websocket-server:1.1"
     container_name: coltrans-web-socket-server
     restart: always
     ports:
@@ -11,7 +11,7 @@ services:
        aliases:
         - socket-server1
   socket-server2:
-    image: "erdnando/coltrans-websocket-server:1.0"
+    image: "erdnando/coltrans-websocket-server:1.1"
     container_name: coltrans-web-socket-server2
     restart: always
     ports:
